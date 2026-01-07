@@ -10,7 +10,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #f6e3c5; /* Kedinin arka plan rengi */
+            background-color: #ffffff; /* Temiz bir beyaz arka plan */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -28,24 +28,22 @@
         }
 
         .cat-img {
-            width: 350px; /* Kediyi büyüttük */
+            width: 300px; 
             image-rendering: pixelated;
-            transition: transform 0.2s;
             animation: breathe 3s ease-in-out infinite;
         }
 
         h1 {
-            font-size: 22px; /* Yazıyı büyüttük */
-            color: #4a4a4a;
-            line-height: 1.8;
-            text-shadow: 3px 3px #fff;
+            font-size: 20px;
+            color: #333;
             margin-top: 20px;
         }
 
         .highlight {
             color: #3b82f6;
-            font-size: 28px; /* İsim daha da büyük */
+            font-size: 26px;
             display: block;
+            margin-top: 10px;
         }
 
         .pixel-confetti {
@@ -69,25 +67,25 @@
 <body>
 
 <div class="container" onclick="blowCandles()">
-    <img src="cat.png" id="cat-sprite" class="cat-img" alt="Kedi">
+    <img src="cat.png" id="cat-sprite" class="cat-img" alt="Doğum Günü Kedisi">
     <h1>DOĞUM GÜNÜN KUTLU OLSUN<br><span class="highlight">ERAY ADAM!</span></h1>
-    <p style="font-size: 10px; color: #888;">(Üflemek için kediye tıkla!)</p>
+    <p style="font-size: 10px; color: #999; margin-top: 15px;">(Üflemek için kediye tıkla!)</p>
 </div>
 
 <script>
     function blowCandles() {
-        // Tıklayınca resmi değiştirir
         const cat = document.getElementById('cat-sprite');
+        // ÖNEMLİ: GitHub'daki ikinci resminin adı cat2.png olmalı
         cat.src = 'cat2.png'; 
         
-        // Konfeti patlatır
-        for(let i = 0; i < 100; i++) {
+        alert('İyi ki doğdun Eray Adam! ✨');
+        
+        for(let i = 0; i < 50; i++) {
             createPiece();
         }
     }
 
     const colors = ['#3b82f6', '#facc15', '#ffb7b7', '#7db131', '#ffffff'];
-
     function createPiece() {
         const confetti = document.createElement('div');
         confetti.className = 'pixel-confetti';
@@ -95,14 +93,10 @@
         confetti.style.top = -Math.random() * 20 + 'px';
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
         confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        confetti.style.opacity = Math.random();
         document.body.appendChild(confetti);
-        
         setTimeout(() => confetti.remove(), 5000);
     }
-
-    // Başlangıçta az miktarda konfeti
-    setInterval(createPiece, 200);
+    setInterval(createPiece, 300);
 </script>
 </body>
 </html>
