@@ -2,43 +2,90 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Doğum Günün Kutlu Olsun Eray Adam</title>
 <style>
+/* Pixel Art Yazı Tipi */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-background:#f6e3c5;
-font-family: Arial, sans-serif;
 margin: 0;
+padding: 0;
+background-color: #f6e3c5; /* Kedinin görseliyle birebir aynı renk */
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100vh;
+font-family: 'Press+Start+2P', cursive;
 overflow: hidden;
+text-align: center;
 }
-.card {
-text-align:center;
+
+.container {
+position: relative;
+z-index: 10;
 }
-img.cat {
-width:280px;
+
+.cat-img {
+width: 320px;
 image-rendering: pixelated;
+margin-bottom: 30px;
+/* Hafif nefes alma animasyonu */
+animation: breathe 3s ease-in-out infinite;
 }
-.blow {
-animation: blow 2s infinite;
-}
-@keyframes blow {
-0% { transform: translateX(0); }
-50% { transform: translateX(-5px); }
-100% { transform: translateX(0); }
-}
+
 h1 {
-font-size: 20px;
-color: #333;
+font-size: 16px;
+color: #4a4a4a;
+line-height: 1.8;
+text-shadow: 2px 2px #fff;
+}
+
+.highlight {
+color: #3b82f6;
+}
+
+/* Pixel Konfeti Parçacıkları */
+.pixel-confetti {
+position: absolute;
+width: 8px;
+height: 8px;
+z-index: 1;
+animation: fall linear infinite;
+}
+
+@keyframes fall {
+to { transform: translateY(110vh) rotate(360deg); }
+}
+
+@keyframes breathe {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.03); }
 }
 </style>
 </head>
 <body>
-<div class="card">
-<img class="cat blow" src="cat.png">
-<h1>Doğum Günün Kutlu Olsun Eray Adam 🎉</h1>
+
+<div class="container">
+<img src="cat.png" class="cat-img" alt="Doğum Günü Kedisi">
+<h1>DOĞUM GÜNÜN KUTLU OLSUN<br><span class="highlight">ERAY ADAM!</span></h1>
 </div>
+
+<script>
+// Şapka ve pasta renklerinden oluşan pixel parçacıkları
+const colors = ['#3b82f6', '#facc15', '#ffb7b7', '#7db131', '#ffffff'];
+
+for(let i = 0; i < 50; i++) {
+const confetti = document.createElement('div');
+confetti.className = 'pixel-confetti';
+confetti.style.left = Math.random() * 100 + 'vw';
+confetti.style.top = -Math.random() * 20 + 'px';
+confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+confetti.style.opacity = Math.random();
+document.body.appendChild(confetti);
+}
+</script>
 </body>
 </html>
