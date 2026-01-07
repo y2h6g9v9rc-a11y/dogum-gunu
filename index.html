@@ -3,136 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Doğum Günün Kutlu Olsun Eray Adam!</title>
+<title>Doğum Günün Kutlu Olsun Eray Adam</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 body {
-margin: 0;
-padding: 0;
-background-color: #f7e1bc;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-height: 100vh;
-font-family: 'Press+Start+2P', cursive;
-overflow: hidden;
-text-align: center;
+margin: 0; padding: 0;
+background-color: #f6e3c5; /* Orijinal resmin arka plan rengi */
+display: flex; flex-direction: column;
+align-items: center; justify-content: center;
+height: 100vh; font-family: 'Press+Start+2P', cursive;
+overflow: hidden; text-align: center;
 }
-
-/* HAREKETLİ DEV BULUTLAR */
 .cloud {
-position: absolute;
-background: #fff;
-width: 180px;
-height: 50px;
-border-radius: 50px;
-opacity: 0.9;
-animation: float linear infinite;
+position: absolute; background: #fff;
+width: 150px; height: 45px; border-radius: 50px;
+opacity: 0.8; animation: float linear infinite;
 z-index: 1;
 }
-.cloud::after, .cloud::before {
-content: '';
-position: absolute;
-background: #fff;
-border-radius: 50%;
-}
-.cloud::after { width: 90px; height: 90px; top: -45px; left: 30px; }
-.cloud::before { width: 70px; height: 70px; top: -30px; left: 90px; }
+.cloud::after { content: ''; position: absolute; background: #fff; width: 80px; height: 80px; top: -40px; left: 35px; border-radius: 50%; }
+@keyframes float { from { left: -200px; } to { left: 110vw; } }
 
-@keyframes float {
-from { left: -250px; }
-to { left: 110vw; }
-}
-
-h1 {
-z-index: 10;
-color: #3b82f6;
-text-shadow: 3px 3px #fff;
-font-size: 14px;
-line-height: 2;
-margin-bottom: 30px;
-}
-
-.scene {
+.cat-container {
 position: relative;
-width: 350px;
-height: 300px;
 z-index: 5;
-display: flex;
-align-items: flex-end;
-justify-content: center;
+width: 90%;
+max-width: 450px;
 }
-
-/* ÇİMEN */
-.grass {
-position: absolute;
-bottom: 0;
-width: 320px;
-height: 60px;
-background: #7db131;
-border-radius: 50%;
-z-index: 2;
+.cat-img {
+width: 100%;
+image-rendering: pixelated; /* Resmin net kalmasını sağlar */
 }
-
-/* PIXEL ART KEDİ VE PASTA (KODUN İÇİNDE ÇİZİM) */
-.pixel-cat-svg {
-width: 300px;
-height: 300px;
+h1 {
+font-size: 14px;
+color: #3b82f6;
+text-shadow: 2px 2px #fff;
+margin-bottom: 10px;
 z-index: 10;
-image-rendering: pixelated;
-}
-
-.confetti {
-position: absolute;
-width: 8px;
-height: 8px;
-z-index: 100;
-animation: fall 3s linear infinite;
-}
-
-@keyframes fall {
-to { transform: translateY(100vh) rotate(360deg); }
 }
 </style>
 </head>
 <body>
-
 <div class="cloud" style="top: 10%; animation-duration: 25s;"></div>
-<div class="cloud" style="top: 20%; left: 30%; animation-duration: 40s; transform: scale(1.5); opacity: 0.8;"></div>
-<div class="cloud" style="top: 15%; left: 70%; animation-duration: 30s; transform: scale(1.2);"></div>
+<div class="cloud" style="top: 25%; animation-duration: 40s; transform: scale(1.5);"></div>
 
 <h1>DOĞUM GÜNÜN KUTLU OLSUN<br><span style="color: #e67e22;">ERAY ADAM!</span></h1>
 
-<div class="scene">
-<div class="grass"></div>
-<svg class="pixel-cat-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
-<rect x="45" y="55" width="25" height="25" fill="#2d2d2d"/> <rect x="40" y="42" width="30" height="20" fill="#2d2d2d"/> <rect x="40" y="37" width="8" height="8" fill="#2d2d2d"/> <rect x="62" y="37" width="8" height="8" fill="#2d2d2d"/> <rect x="70" y="65" width="15" height="6" fill="#2d2d2d"/> <rect x="47" y="48" width="4" height="4" fill="white"/> <rect x="59" y="48" width="4" height="4" fill="white"/> <rect x="53" y="54" width="4" height="2" fill="white"/> <rect x="51" y="52" width="2" height="2" fill="white"/>
-<rect x="57" y="52" width="2" height="2" fill="white"/>
-
-<path d="M45 42 L55 15 L65 42 Z" fill="#3b82f6"/>
-<circle cx="55" cy="15" r="3" fill="#facc15"/>
-
-<rect x="15" y="70" width="25" height="15" fill="#ffb7b7"/> <rect x="18" y="65" width="19" height="8" fill="#ffffff"/> <rect x="27" y="55" width="2" height="10" fill="#333"/>
-<rect x="26" y="50" width="4" height="5" fill="#ff5555">
-<animate attributeName="opacity" values="1;0.4;1" dur="0.6s" repeatCount="indefinite" />
-</rect>
-</svg>
+<div class="cat-container">
+<img src="cat.png" class="cat-img" alt="Doğum Günü Kedisi">
 </div>
 
 <script>
-const colors = ['#facc15', '#3b82f6', '#ef4444', '#10b981', '#a855f7'];
-for(let i=0; i<50; i++) {
-const c = document.createElement('div');
-c.className = 'confetti';
-c.style.left = Math.random() * 100 + 'vw';
-c.style.top = '-20px';
-c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-c.style.animationDuration = (Math.random() * 2 + 2) + 's';
-c.style.animationDelay = Math.random() * 5 + 's';
+// Konfeti yağmuru
+for(let i=0; i<40; i++) {
+let c = document.createElement('div');
+c.style.cssText = `position:absolute; width:8px; height:8px; background:${['#ff0','#f0f','#0ff','#0f0','#f00'][Math.floor(Math.random()*5)]}; left:${Math.random()*100}vw; top:-10px; z-index:100; animation:fall ${Math.random()*2+2}s linear infinite`;
 document.body.appendChild(c);
 }
+const s = document.createElement('style');
+s.innerHTML = `@keyframes fall { to { transform: translateY(100vh) rotate(360deg); } }`;
+document.head.appendChild(s);
 </script>
 </body>
 </html>
