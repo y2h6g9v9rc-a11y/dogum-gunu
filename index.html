@@ -10,7 +10,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #f6e3c5; /* Burayı kedinin arka plan rengine göre ayarla */
+            background-color: #f6e3c5; /* Kedinin arka plan rengi */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -24,35 +24,28 @@
         .container {
             position: relative;
             z-index: 10;
-            cursor: pointer; /* Tıklanabilir olduğunu belli eder */
+            cursor: pointer;
         }
 
         .cat-img {
-            width: 380px; /* Biraz büyütüldü */
+            width: 350px; /* Kediyi büyüttük */
             image-rendering: pixelated;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
+            transition: transform 0.2s;
             animation: breathe 3s ease-in-out infinite;
         }
 
-        /* Tıklayınca zıplama efekti */
-        .container:active .cat-img {
-            transform: scale(0.9);
-        }
-
         h1 {
-            font-size: 24px; /* Yazı boyutu büyütüldü */
+            font-size: 22px; /* Yazıyı büyüttük */
             color: #4a4a4a;
-            line-height: 1.6;
+            line-height: 1.8;
             text-shadow: 3px 3px #fff;
             margin-top: 20px;
         }
 
         .highlight {
             color: #3b82f6;
+            font-size: 28px; /* İsim daha da büyük */
             display: block;
-            font-size: 32px; /* İsim daha da büyük */
-            margin-top: 10px;
         }
 
         .pixel-confetti {
@@ -71,58 +64,45 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
-
-        .instruction {
-            font-size: 10px;
-            color: #888;
-            margin-top: 15px;
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
     </style>
 </head>
 <body>
 
 <div class="container" onclick="blowCandles()">
-    <img src="cat.png" id="cat-sprite" class="cat-img" alt="Doğum Günü Kedisi">
-    <h1>DOĞUM GÜNÜN KUTLU OLSUN<span class="highlight">ERAY ADAM!</span></h1>
-    <p class="instruction">Üflemek (söndürmek) için kediye tıkla!</p>
+    <img src="cat.png" id="cat-sprite" class="cat-img" alt="Kedi">
+    <h1>DOĞUM GÜNÜN KUTLU OLSUN<br><span class="highlight">ERAY ADAM!</span></h1>
+    <p style="font-size: 10px; color: #888;">(Üflemek için kediye tıkla!)</p>
 </div>
 
 <script>
     function blowCandles() {
+        // Tıklayınca resmi değiştirir
         const cat = document.getElementById('cat-sprite');
-        // Buraya mumlar sönük olan yeni görselin adını yazmalısın
-        // cat.src = 'cat-blown.png'; 
+        cat.src = 'cat2.png'; 
         
-        alert('İyi ki doğdun Eray Adam! 🎂');
-        
-        // Daha fazla konfeti patlat
-        createConfetti(100);
+        // Konfeti patlatır
+        for(let i = 0; i < 100; i++) {
+            createPiece();
+        }
     }
 
     const colors = ['#3b82f6', '#facc15', '#ffb7b7', '#7db131', '#ffffff'];
 
-    function createConfetti(amount) {
-        for(let i = 0; i < amount; i++) {
-            const confetti = document.createElement('div');
-            confetti.className = 'pixel-confetti';
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.top = -Math.random() * 20 + 'px';
-            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            confetti.style.opacity = Math.random();
-            document.body.appendChild(confetti);
-            
-            // Ekran dışına çıkanları temizle
-            setTimeout(() => confetti.remove(), 5000);
-        }
+    function createPiece() {
+        const confetti = document.createElement('div');
+        confetti.className = 'pixel-confetti';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.top = -Math.random() * 20 + 'px';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        confetti.style.opacity = Math.random();
+        document.body.appendChild(confetti);
+        
+        setTimeout(() => confetti.remove(), 5000);
     }
 
-    createConfetti(50); // Açılışta başlat
+    // Başlangıçta az miktarda konfeti
+    setInterval(createPiece, 200);
 </script>
 </body>
 </html>
