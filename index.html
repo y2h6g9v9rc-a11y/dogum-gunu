@@ -2,66 +2,43 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Doğum Günün Kutlu Olsun Eray Adam!</title>
+<title>Doğum Günün Kutlu Olsun Eray Adam</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 body {
-margin: 0; padding: 0;
-background-color: #f6e3c5; /* Orijinal resmin arka plan rengi */
-display: flex; flex-direction: column;
-align-items: center; justify-content: center;
-height: 100vh; font-family: 'Press+Start+2P', cursive;
-overflow: hidden; text-align: center;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:#f6e3c5;
+font-family: Arial, sans-serif;
+margin: 0;
+overflow: hidden;
 }
-.cloud {
-position: absolute; background: #fff;
-width: 150px; height: 45px; border-radius: 50px;
-opacity: 0.8; animation: float linear infinite;
-z-index: 1;
+.card {
+text-align:center;
 }
-.cloud::after { content: ''; position: absolute; background: #fff; width: 80px; height: 80px; top: -40px; left: 35px; border-radius: 50%; }
-@keyframes float { from { left: -200px; } to { left: 110vw; } }
-
-.cat-container {
-position: relative;
-z-index: 5;
-width: 90%;
-max-width: 450px;
+img.cat {
+width:280px;
+image-rendering: pixelated;
 }
-.cat-img {
-width: 100%;
-image-rendering: pixelated; /* Resmin net kalmasını sağlar */
+.blow {
+animation: blow 2s infinite;
+}
+@keyframes blow {
+0% { transform: translateX(0); }
+50% { transform: translateX(-5px); }
+100% { transform: translateX(0); }
 }
 h1 {
-font-size: 14px;
-color: #3b82f6;
-text-shadow: 2px 2px #fff;
-margin-bottom: 10px;
-z-index: 10;
+font-size: 20px;
+color: #333;
 }
 </style>
 </head>
 <body>
-<div class="cloud" style="top: 10%; animation-duration: 25s;"></div>
-<div class="cloud" style="top: 25%; animation-duration: 40s; transform: scale(1.5);"></div>
-
-<h1>DOĞUM GÜNÜN KUTLU OLSUN<br><span style="color: #e67e22;">ERAY ADAM!</span></h1>
-
-<div class="cat-container">
-<img src="cat.png" class="cat-img" alt="Doğum Günü Kedisi">
+<div class="card">
+<img class="cat blow" src="cat.png">
+<h1>Doğum Günün Kutlu Olsun Eray Adam 🎉</h1>
 </div>
-
-<script>
-// Konfeti yağmuru
-for(let i=0; i<40; i++) {
-let c = document.createElement('div');
-c.style.cssText = `position:absolute; width:8px; height:8px; background:${['#ff0','#f0f','#0ff','#0f0','#f00'][Math.floor(Math.random()*5)]}; left:${Math.random()*100}vw; top:-10px; z-index:100; animation:fall ${Math.random()*2+2}s linear infinite`;
-document.body.appendChild(c);
-}
-const s = document.createElement('style');
-s.innerHTML = `@keyframes fall { to { transform: translateY(100vh) rotate(360deg); } }`;
-document.head.appendChild(s);
-</script>
 </body>
 </html>
