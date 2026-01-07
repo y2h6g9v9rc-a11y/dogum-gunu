@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
   margin: 0;
   padding: 0;
@@ -14,4 +16,53 @@ body {
   height: 100vh;
   font-family: 'Press Start 2P', cursive;
   overflow: hidden;
-  text-align: cent
+  text-align: center;
+}
+
+.container {
+  position: relative;
+  z-index: 10;
+}
+
+.cat-img {
+  width: 320px;
+  image-rendering: pixelated;
+  margin-bottom: 30px;
+  animation: breathe 3s ease-in-out infinite;
+  filter: drop-shadow(0 8px 0 rgba(0,0,0,0.08));
+}
+
+h1 {
+  font-size: 16px;
+  color: #4a4a4a;
+  line-height: 1.8;
+  text-shadow: 2px 2px #ffffff;
+}
+
+.highlight {
+  color: #3b82f6;
+}
+
+.pixel-confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  z-index: 1;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+</style>
