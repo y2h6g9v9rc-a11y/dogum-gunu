@@ -1,0 +1,57 @@
+
+Melisa Dindar <melisadindarz@gmail.com>
+00:50 (1 dakika önce)
+Alıcı: ben
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doğum Günün Kutlu Olsun Eray Adam</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+body {
+margin: 0; padding: 0;
+background-color: #f6e3c5;
+display: flex; flex-direction: column;
+align-items: center; justify-content: center;
+height: 100vh; font-family: 'Press+Start+2P', cursive;
+overflow: hidden; text-align: center;
+}
+.cloud {
+position: absolute; background: #fff;
+width: 120px; height: 40px; border-radius: 50px;
+opacity: 0.9; animation: float linear infinite;
+}
+.cloud::after { content: ''; position: absolute; background: #fff; width: 60px; height: 60px; top: -30px; left: 20px; border-radius: 50%; }
+@keyframes float { from { left: -150px; } to { left: 110vw; } }
+.cat-container { position: relative; width: 300px; }
+.cat-img { width: 100%; image-rendering: pixelated; }
+h1 { font-size: 14px; color: #3b82f6; text-shadow: 2px 2px #fff; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="cloud" style="top: 10%; animation-duration: 15s;"></div>
+<div class="cloud" style="top: 25%; animation-duration: 25s;"></div>
+<h1>DOĞUM GÜNÜN KUTLU OLSUN<br><span style="color: #e67e22;">ERAY ADAM!</span></h1>
+<div class="cat-container">
+<img src="https://i.ibb.co/XfXf6zX/pixelcat.png" class="cat-img" alt="Doğum günü kedisi">
+</div>
+<script>
+for(let i=0; i<30; i++) {
+let c = document.createElement('div');
+c.style.position = 'absolute';
+c.style.width = '8px'; c.style.height = '8px';
+c.style.backgroundColor = ['#ff0','#f0f','#0ff','#0f0','#f00'][Math.floor(Math.random()*5)];
+c.style.left = Math.random() * 100 + 'vw';
+c.style.top = '-10px';
+c.style.animation = `fall ${Math.random()*2+2}s linear infinite`;
+document.body.appendChild(c);
+}
+const style = document.createElement('style');
+style.innerHTML = `@keyframes fall { to { transform: translateY(100vh) rotate(360deg); } }`;
+document.head.appendChild(style);
+</script>
+</body>
+</html>
